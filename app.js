@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 /* routes import */
-
+const aboutUsRoutes = require('./routes/about');
 
 /* middleware */
 app.use(morgan('dev'));
@@ -18,8 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // routes
-
-// app.use('/api');
+app.use('/api/about', aboutUsRoutes);
 
 /* errors handling */
 app.use((req, res, next) => {
