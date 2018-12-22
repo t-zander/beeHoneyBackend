@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 8000;
 
 /* routes import */
 const aboutUsRoutes = require('./routes/about');
+const categoriesRoutes = require('./routes/categories');
 
 /* middleware */
 app.use(morgan('dev'));
@@ -19,7 +20,7 @@ app.use(cors());
 app.use(express.static('public'))
 // routes
 app.use('/api/about', aboutUsRoutes);
-
+app.use('/api/categories', categoriesRoutes);
 /* errors handling */
 app.use((req, res, next) => {
   const error = new Error('Not found');
