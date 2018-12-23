@@ -11,6 +11,19 @@ exports.getAll = (req, res) => {
     })
 }
 
+exports.getByCategory = (req, res) => {
+  const categoryId = req.params.categoryId;
+
+  Product
+    .find({categoryId: categoryId})
+    .then( response => {
+      res.status(200).json(response);
+    })
+    .catch( error => {
+      res.status(500).json(error);
+    })
+}
+
 exports.addOne = (req, res) => {
   const product = new Product({
     price: req.body.price,
