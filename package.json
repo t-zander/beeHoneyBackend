@@ -1,5 +1,5 @@
 {
-  "name": "academind",
+  "name": "Bee-honey",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,11 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.14",
+    "mongoose-unique-validator": "^2.0.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.7"
   }
