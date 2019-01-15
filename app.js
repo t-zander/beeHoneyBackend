@@ -12,18 +12,23 @@ const PORT = process.env.PORT || 8000;
 const aboutUsRoutes = require('./routes/about');
 const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
+const authRoutes = require('./routes/auth');
+const ordersRoutes = require('./routes/orders');
 
 /* middleware */
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('public'))
+app.use(express.static('public'));
+
 
 /* routes */
+app.use('/api/auth', authRoutes);
 app.use('/api/about', aboutUsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/products', productsRoutes);
+app.use('/api/admin/orders', ordersRoutes);
 
 /* errors handling */
 app.use((req, res, next) => {

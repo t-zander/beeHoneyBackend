@@ -5,11 +5,11 @@ exports.connectToMongoDb = () => {
   mongoose.connect(
     uri,
     {useNewUrlParser: true},
-  )
-  .then( _ => {
-    console.log('successfully connected to mongo db');
-  })
-  .catch( error => {
-    console.log('unable to connect to mongo db', error);
-  });
-}
+    )
+    .then( _ => {
+      console.log('successfully connected to mongo db');
+    })
+    .catch( error => {
+      console.log('unable to connect to mongo db', error);
+    });
+};

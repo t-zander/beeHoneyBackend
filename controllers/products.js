@@ -9,7 +9,7 @@ exports.getAll = (req, res) => {
     .catch( error => {
       res.status(500).json(error)
     })
-}
+};
 
 exports.getByCategory = (req, res) => {
   const categoryId = req.params.categoryId;
@@ -22,8 +22,9 @@ exports.getByCategory = (req, res) => {
     .catch( error => {
       res.status(500).json(error);
     })
-}
+};
 
+/*for admin only*/
 exports.addOne = (req, res) => {
   const product = new Product({
     price: req.body.price,
@@ -49,19 +50,12 @@ exports.addOne = (req, res) => {
       res.status(500).json(error);
     })
 
-}
-/* exports.addOne = (req, res) => {
+};
 
-  const category = new Category({
-    name: req.body.name
-  });
+exports.deleteOne = (req, res) => {
 
-  category
-    .save()
-    .then(response => {
-      res.status(201).json(response);
-    })
-    .catch(error => {
-      res.status(500).json(error);
-    })
-} */
+};
+
+exports.updateOne = (req, res) => {
+
+};
