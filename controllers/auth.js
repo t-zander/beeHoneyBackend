@@ -6,8 +6,6 @@ const jwt = require('jsonwebtoken');
 exports.login = (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
-
 };
 
 exports.signup = (req, res) => {
@@ -41,7 +39,7 @@ exports.loginAsAdmin = (req, res) => {
     .findOne({email: email})
     .then(response => {
       if(!response) {
-        return res.status(500).json({error: 'Wrong credentials'})
+        return res.status(401).json({error: 'Wrong credentials'})
       }
 
       bcrypt
