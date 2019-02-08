@@ -11,6 +11,19 @@ exports.getAll = (req, res) => {
     })
 };
 
+exports.getById = (req, res) => {
+  const productId = req.params.productId;
+
+  Product
+    .findById(productId)
+    .then( product => {
+      res.status(200).json(product);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+}
+
 exports.getByCategory = (req, res) => {
   const categoryId = req.params.categoryId;
 
@@ -49,7 +62,6 @@ exports.addOne = (req, res) => {
     .catch(error => {
       res.status(500).json(error);
     })
-
 };
 
 exports.deleteOne = (req, res) => {
@@ -57,5 +69,24 @@ exports.deleteOne = (req, res) => {
 };
 
 exports.updateOne = (req, res) => {
-
+  
+  const productId = req.params.productId;
+  Product
+    .findById(productId)
+    .then(product => {
+      // TODO: check this in docs
+      for(key in product) {
+        if(req.body[key]) {
+          product[key] = req.body[key];
+        }
+      }
+      return product.save();
+    })
+    .then(updatedProduct => {
+      res.status(200).json(updatedProduct);
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json(error);
+    })
 };

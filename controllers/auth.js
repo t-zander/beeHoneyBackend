@@ -34,7 +34,7 @@ exports.signup = (req, res) => {
 exports.loginAsAdmin = (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-
+  console.log(email, password);
   Admin
     .findOne({email: email})
     .then(response => {
