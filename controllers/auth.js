@@ -2,6 +2,8 @@ const User = require('../mongodb/models/user');
 const Admin = require('../mongodb/models/admin');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const checkIfValid = require('../helpers/validatorHelper');
+const { validationResult } = require('express-validator/check');
 
 exports.login = (req, res) => {
   const email = req.body.email;
@@ -9,6 +11,11 @@ exports.login = (req, res) => {
 };
 
 exports.signup = (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ message: 'invalid data', errors: errors.array() });
+  };
+  
   const email = req.body.email;
   const password = req.body.password;
 
