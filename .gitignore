@@ -1,5 +1,5 @@
 /node_modules
-.idea/
+/.idea
 seed.js
 ### WebStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
