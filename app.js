@@ -28,7 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/about', aboutUsRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/products', productsRoutes);
-app.use('/api/admin/orders', ordersRoutes);
+app.use('/api/orders', ordersRoutes);
 
 /* errors handling */
 app.use((req, res, next) => {
