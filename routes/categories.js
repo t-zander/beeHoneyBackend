@@ -4,7 +4,8 @@ const checkAdmin = require('../middleware/checkAdmin');
 
 router.get('/', categoriesController.getAll);
 
-/*for admin only*/
+/* for admin only */
 router.post('/', checkAdmin, categoriesController.addOne);
+router.delete('/:categoryId', checkAdmin, categoriesController.removeOne);
 
 module.exports = router;
