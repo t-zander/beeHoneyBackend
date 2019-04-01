@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const uri = 'mongodb+srv://t-zander:ynVTQWHCkjv7MrOU@bee-honey-mn8g0.mongodb.net/beeHoneyShop?retryWrites=true';
 
 exports.connectToMongoDb = () => {
-  mongoose.connect(
-    uri,
-    {useNewUrlParser: true},
+  mongoose.connect(uri,
+      {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useCreateIndex: true
+      },
     )
     .then( _ => {
       console.log('successfully connected to mongo db');

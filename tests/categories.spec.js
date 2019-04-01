@@ -4,7 +4,6 @@ const Category = require('../mongodb/models/category');
 describe('Testing categories controller', () => {
 
   beforeEach('Staging data', async () => {
-    console.log('adds new category')
     const category = new Category({
       name: 'test category'
     });
