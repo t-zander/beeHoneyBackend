@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const categoriesController = require('../controllers/categories');
-const checkAdmin = require('../middleware/checkAdmin');
+const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/', categoriesController.getAll);
 
 /* for admin only */
-router.post('/', checkAdmin, categoriesController.addOne);
-router.delete('/:categoryId', checkAdmin, categoriesController.removeOne);
+router.post('/', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, categoriesController.addOne);
+router.delete('/:categoryId', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, categoriesController.removeOne);
+router.patch('/:categoryId', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, categoriesController.updateOne)
 
 module.exports = router;

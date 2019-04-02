@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const ordersController = require('../controllers/orders');
-const checkAdmin = require('../middleware/checkAdmin');
+const authMiddleware = require('../middleware/authMiddleware');
 
-router.get('/', checkAdmin, ordersController.getAll);
-router.get('/:orderId', checkAdmin, ordersController.getOne);
+router.get('/', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, ordersController.getAll);
+router.get('/:orderId', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, ordersController.getOne);
 
 module.exports = router;

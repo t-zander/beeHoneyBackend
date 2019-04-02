@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const productsController = require('../controllers/products');
-const checkAdmin = require('../middleware/checkAdmin');
+const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/', productsController.getAll);
 router.get('/:productId', productsController.getById);
 router.get('/category/:categoryId', productsController.getByCategory);
 
 /*only for admin*/
-router.post('/', checkAdmin, productsController.addOne);
-router.delete('/', checkAdmin, productsController.deleteOne);
-router.patch('/:productId', checkAdmin, productsController.updateOne);
+router.post('/', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, productsController.addOne);
+router.delete('/', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, productsController.deleteOne);
+router.patch('/:productId', authMiddleware.checkAuthToken, authMiddleware.chekIfAdmin, productsController.updateOne);
 
 module.exports = router;
