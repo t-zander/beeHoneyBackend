@@ -11,10 +11,10 @@ mongoose
     console.log('unable to connect to mongo db', error);
   });
 
-beforeEach('Clears database', (done) => {
+/* beforeEach('Clears database', (done) => {
   Category.deleteMany({})
     .then(_ => {
       console.log('clears database')
       done();
     })
-});
+}); */
