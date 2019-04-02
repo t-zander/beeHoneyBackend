@@ -3,7 +3,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const Schema = mongoose.Schema;
 
 const categorySchema = Schema({
-  name: {type: String, trim: true, required: true, unique: true, uniqueCaseInsensitive: true}
+  name: {type: String, trim: true, required: true, minlength: 2, unique: true, uniqueCaseInsensitive: true}
 })
 
 categorySchema.plugin(uniqueValidator, { message: 'category name should be unique' });
