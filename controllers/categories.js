@@ -43,7 +43,7 @@ class CategoriesController {
   static updateOne(req, res) {
     const categoryId = req.params.categoryId;
   
-    Category.findOneAndUpdate({_id: categoryId}, req.body)
+    Category.findOneAndUpdate({_id: categoryId}, req.body,  {new: true})
       .then(response => {
         res.status(201).json(response)
       })
