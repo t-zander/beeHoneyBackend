@@ -40,7 +40,11 @@ class ProductsController {
 
   /* admin only */
   static addOne(req, res) {
-    const product = new Product({...req.body});
+    console.log(req.file)
+    if(!req.file) {
+      return res.status(500).json({error: 'Image is required for product!'})
+    }
+    /* const product = new Product({...req.body});
     product
       .save()
       .then(response => {
@@ -48,7 +52,7 @@ class ProductsController {
       })
       .catch(error => {
         res.status(500).json(error);
-      })
+      }) */
   }
 
   static deleteOne(req, res) {
