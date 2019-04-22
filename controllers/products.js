@@ -49,9 +49,11 @@ class ProductsController {
       return res.status(500).json({error: 'This file type is not allowed!'})
     }
     if(!req.file) {
-      return res.status(500).json({error: 'Image is a required field!'})
+      return res.status(500).json({error: 'Image is required!'})
     }
-    const product = new Product({...req.body, ...{imageUrl: path.normalize(req.file.path)}});
+    const imagePath = `images/${req.file.filename}`;
+    const product = new Product({...req.body, ...{imageUrl: imagePath}});
+    
     product
       .save()
       .then(response => {

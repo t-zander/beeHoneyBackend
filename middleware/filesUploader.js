@@ -1,11 +1,10 @@
 const multer  = require('multer');
+const path = require('path');
 
 exports.imageUploader = () => {
   const allowedImgMimeTypes = ['image/jpeg', 'image/png'];
   const storage = multer.diskStorage({
-    destination(req, file, callback) {
-      callback(null, 'public/images')
-    },
+    destination: `public/images`,
     filename(req, file, callback) {
       callback(null, `${Date.now()}-${file.originalname}`)
     }
